@@ -1,4 +1,4 @@
-package com.pei.fraud;
+package com.pei.clients.fraud;
 
 public record FraudCheckResponse(Boolean isFraudster) {
 }
