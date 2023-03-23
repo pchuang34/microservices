@@ -1,4 +1,4 @@
-package com.pei.notificaion;
+package com.pei.notification;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

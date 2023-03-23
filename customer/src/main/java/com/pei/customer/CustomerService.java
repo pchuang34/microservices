@@ -1,5 +1,6 @@
 package com.pei.customer;
 
+import com.pei.amqp.RabbitMQMessageProducer;
 import com.pei.clients.fraud.FraudCheckResponse;
 import com.pei.clients.fraud.FraudClient;
 import com.pei.clients.notification.NotificationClient;
@@ -13,8 +14,9 @@ import org.springframework.web.client.RestTemplate;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
-    private final RestTemplate restTemplate;
     private final FraudClient fraudClient;
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
+    private final RestTemplate restTemplate;
     private final NotificationClient notificationClient;
 
     public void registerCustomer(CustomerRegistrationRequest request){
@@ -40,11 +42,17 @@ public class CustomerService {
          if(fraudCheckResponse.isFraudster()){
             throw new IllegalStateException("fraudster");
         }
-        //todo: make it async, adding to queue
-        notificationClient.sendNotification(new NotificationRequest(
+
+        NotificationRequest notificationRequest = new NotificationRequest(
                 customer.getId(),
                 customer.getEmail(),
                 String.format("Hi %s, welcome!", customer.getFirstName())
-        ));
+        );
+        //notificationClient.sendNotification(notificationRequest);
+        rabbitMQMessageProducer.publish(
+                notificationRequest,
+                "internal.exchange",
+                "internal.notification.routing-key"
+        );
     }
 }
