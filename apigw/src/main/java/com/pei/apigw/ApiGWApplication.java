@@ -1,17 +1,13 @@
-package com.pei.notificaion;
+package com.pei.apigw;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients(
-        basePackages = "com.pei.clients"
-)
-public class NotificationApplication {
+public class ApiGWApplication {
     public static void main(String[] args) {
-        SpringApplication.run(NotificationApplication.class, args);
+        SpringApplication.run(ApiGWApplication.class, args);
     }
 }

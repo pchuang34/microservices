@@ -1,4 +1,4 @@
-package com.pei.notificaion;
+package com.pei.notification;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

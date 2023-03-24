@@ -1,4 +1,4 @@
-package com.pei.notificaion;
+package com.pei.notification;
 
 import com.pei.clients.notification.NotificationRequest;
 import lombok.AllArgsConstructor;
@@ -21,4 +21,5 @@ public class NotificationController {
         log.info("send new notification {}", notificationRequest);
         notificationService.send(notificationRequest);
     }
+
 }
