@@ -9,13 +9,15 @@
 ### Docker
 * `docker compose up -d`
 ### Kubernetes
-####Start Minikube
+Start Minikube
 * `minikube start --memory=4g`
-#### Create Postgres, Zipkin & Rabbitmq Services
+
+Create Postgres, Zipkin & Rabbitmq Services
 * `kubectl apply -f bootstrap/postgres`
 * `kubectl apply -f bootstrap/zipkin`
 * `kubectl apply -f bootstrap/rabbitmq`
-#### Create Customer, Fraud & Notification Services
+
+Create Customer, Fraud & Notification Services
 * `kubectl apply -f services/customer`
 * `kubectl apply -f services/fraud`
 * `kubectl apply -f services/notification`
