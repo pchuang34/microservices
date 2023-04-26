@@ -26,9 +26,28 @@ Create Customer, Fraud & Notification Services
 
 ## Service Endpoints
 ###  Customer Service
-* POST /api/v1/customers - Registers a new customer
+* **POST** api/v1/customers - Registers a new customer
+#### Request Body  
+| Field      | Type    | Required | Description                       |
+|------------|---------|----------|----------------------------------|
+| first_name | string  | yes      | Customer's first name.            |
+| last_name  | string  | yes      | Customer's last name.             |
+| email      | string  | yes      | Customer's email address.         |
+#### Example Request
+```
+###
+POST http://localhost:8080/api/v1/customers
+Content-Type: application/json
+
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "johndoe@example.com"
+}
+```
+
 ###  Fraud Service
-* GET /api/v1/fraud-check{customerId} - Checks whether a customer is a fraudster
+* **GET** api/v1/fraud-check/{customerId} - Checks whether a customer is a fraudster
 ###  Notification Service
   No endpoints exposed
 

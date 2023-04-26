@@ -25,7 +25,7 @@ public class CustomerService {
                 .lastName(request.lastName())
                 .email(request.email())
                 .build();
-        //todo: ch eck if email valid
+        //todo: check if email valid
         //todo: check if email exist
         //todo: check if fraudster
         customerRepository.saveAndFlush(customer);
